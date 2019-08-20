@@ -15,7 +15,9 @@ The program is developed in Python in a Web format using Flask (web framework), 
 SQLALchemy (Object-relational mapping for SQL databases),Bootstrap (front-end framework) ...
 
 STRUCTURE (see in raw):
+
 KeywordsSuggest
+
 |   database.db
 |   favicon.ico
 |   keywordssuggest.py
