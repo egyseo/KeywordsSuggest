@@ -18,50 +18,50 @@ STRUCTURE :
 
 KeywordsSuggest
 
-|   database.db
+|---database.db
 
-|   favicon.ico
+|---favicon.ico
 
-|   keywordssuggest.py
+|---keywordssuggest.py
 
-|   license.txt
+|---license.txt
 
-|   myconfig.py
+|---myconfig.py
 
-|   __init__.py
+|---__init__.py
 
 
 +---configdata
 
-|       tldLang.xlsx
+|-------tldLang.xlsx
 
-|       user_agents-taglang.txt
+|-------user_agents-taglang.txt
 
 
 
 +---static
 
-|   |   Anakeyn_Rectangle.jpg
+|-------Anakeyn_Rectangle.jpg
 
-|   |   keywordssuggest.css
+|-------keywordssuggest.css
 
-|   |   Oeil_Anakeyn.jpg
+|-------Oeil_Anakeyn.jpg
 
-|   |   signin.css
+|-------signin.css
 
-|   |   starter-template.css
+|-------starter-template.css
 
 
 
 +---templates
 
-|       index.html
+|-------index.html
 
-|       keywordssuggest.html
+|-------keywordssuggest.html
 
-|       login.html
+|-------login.html
 
-|       signup.html
+|-------signup.html
    
 
 +---uploads
