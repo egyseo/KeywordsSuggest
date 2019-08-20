@@ -9,7 +9,7 @@ TF-IDF means term frequency–inverse document frequency. TF-IDF is a numerical 
 how important a word is to a document in a collection or corpus.
 
 In order to calculate a "global" TF-IDF value we calculate a mean of TF-IDF for each terms from all documents to 
-find popular expressions and an non-zero mean of each term from all documents for original expressions.
+find popular expressions and a non-zero mean of each term from all documents for original expressions.
 
 The program is developed in Python in a Web format using Flask (web framework), Jinja2 (web template engine), 
 SQLALchemy (Object-relational mapping for SQL databases),Bootstrap (front-end framework) ...
@@ -67,7 +67,7 @@ KeywordsSuggest
 +---uploads
 
 
-By default the systeme works with a sqlite database called database.db which is created the first time you use the program.
+By default the system works with a SQLite database called database.db which is created the first time you use the program.
 The main program is "keywordssuggest.py".
 
 Default config variables are in the myconfig.py file including the 2 default users : admin (pwd "adminpwd") 
