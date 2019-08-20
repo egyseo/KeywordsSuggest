@@ -1,4 +1,4 @@
-# KeywordsSuggest
+# KeywordsSuggest - Version Alpha 0.0 Licence GPL 3
 Anakeyn Keywords Suggest is a keywords suggestion tool for SEO and Web Maketing purpose.
 This tool searches in the first  x pages responding to a given keyword in Google. 
 
