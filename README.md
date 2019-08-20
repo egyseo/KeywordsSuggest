@@ -14,7 +14,7 @@ find popular expressions and an non-zero mean of each term from all documents fo
 The program is developed in Python in a Web format using Flask (web framework), Jinja2 (web template engine), 
 SQLALchemy (Object-relational mapping for SQL databases),Bootstrap (front-end framework) ...
 
-STRUCTURE :
+STRUCTURE (see in raw):
 KeywordsSuggest
 |   database.db
 |   favicon.ico
