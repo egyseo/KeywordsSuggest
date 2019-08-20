@@ -14,35 +14,56 @@ find popular expressions and an non-zero mean of each term from all documents fo
 The program is developed in Python in a Web format using Flask (web framework), Jinja2 (web template engine), 
 SQLALchemy (Object-relational mapping for SQL databases),Bootstrap (front-end framework) ...
 
-STRUCTURE (see in raw):
+STRUCTURE :
 
 KeywordsSuggest
 
 |   database.db
+
 |   favicon.ico
+
 |   keywordssuggest.py
+
 |   license.txt
+
 |   myconfig.py
+
 |   __init__.py
-|   
+
+
 +---configdata
+
 |       tldLang.xlsx
+
 |       user_agents-taglang.txt
-|       
+
+
+
 +---static
+
 |   |   Anakeyn_Rectangle.jpg
+
 |   |   keywordssuggest.css
+
 |   |   Oeil_Anakeyn.jpg
+
 |   |   signin.css
+
 |   |   starter-template.css
-|   |   
-|           
+
+
+
 +---templates
+
 |       index.html
+
 |       keywordssuggest.html
+
 |       login.html
+
 |       signup.html
-|       
+   
+
 +---uploads
 
 
