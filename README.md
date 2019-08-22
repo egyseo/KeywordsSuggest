@@ -125,5 +125,7 @@ As you can, see not all languages are filtered by Google (see here "lr" paramete
 
 Here you will see results of original 2 words expression for "SEO" in Swahili in Democratic Republic of Congo 
 
+![SEO-Swahili-RDC](https://user-images.githubusercontent.com/26166630/63537757-d0876f80-c516-11e9-885b-47dbc7e70f04.jpg)
+
 
 
