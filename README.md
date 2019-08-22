@@ -118,8 +118,12 @@ Next Choose an expression and a Country/Language targeted.
 The system will search in Google pages responding to the Keyword, save the pages, get the content and calculate a TF-IDF for each term founded in pages. Next it will provides 14 files with up to 10.000 popular or original expressions.
 
 
+![AKS-Results](https://user-images.githubusercontent.com/26166630/63536838-b5b3fb80-c514-11e9-9582-21aac39c9950.jpg)
 
 
+As you can, see not all languages are filtered by Google (see here "lr" parameter to get the list : https://developers.google.com/custom-search/docs/xml_results_appendices#lrsp). However, with the country filter and the language specified in the user agent, the results are often exploitable.
+
+Here you will see results of original 2 words expression for "SEO" in Swahili in Democratic Republic of Congo 
 
 
 
