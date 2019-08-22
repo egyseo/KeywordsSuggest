@@ -89,6 +89,23 @@ The same for "original"  keywords/expressions files.
 If available, the system provides a maximum of 10.000 expressions for each file. This could be enough to get ideas :-) 
 
 
+# How to test the program on your computer :
+  
+Download the .zip file of this application https://github.com/Anakeyn/KeywordsSuggest/archive/master.zip and unzip it in a directory on your computer.
 
+Download and Install Anaconda https://www.anaconda.com/distribution/#download-section
+
+Anaconda will install tools on your computer :
+
+
+
+
+
+
+# Library dependencies for the python code.  You need to install these with :
+# For Linux :
+# $ while read requirement; do conda install --yes $requirement || pip install $requirement; done < requirements.txt
+# or for Windows :
+# $ FOR /F "delims=~" %f in (requirements.txt) DO conda install --yes "%f" || pip install "%f"
 
 
