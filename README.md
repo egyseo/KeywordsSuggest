@@ -19,62 +19,34 @@ find popular expressions and a non-zero mean of each term from all documents for
 The program is developed in Python in a Web format using Flask (web framework), Jinja2 (web template engine), 
 SQLALchemy (Object-relational mapping for SQL databases),Bootstrap (front-end framework) ...
 
+#### STRUCTURE :
 
-
-![Anakeyn_Rectangle](https://user-images.githubusercontent.com/26166630/63529711-703c0200-c505-11e9-94b8-f56cc3a92727.jpg)
-
-
-STRUCTURE :
-
-KeywordsSuggest
-
-|---database.db
-
-|---favicon.ico
-
-|---keywordssuggest.py
-
-|---license.txt
-
-|---myconfig.py
-
-|---__init__.py
-
-
+<pre>KeywordsSuggest
+|   database.db
+|   favicon.ico
+|   keywordssuggest.py
+|   license.txt
+|   myconfig.py
+|   __init__.py
+|   
 +---configdata
-
-|-------tldLang.xlsx
-
-|-------user_agents-taglang.txt
-
-
-
+|       tldLang.xlsx
+|       user_agents-taglang.txt
+|       
 +---static
-
-|-------Anakeyn_Rectangle.jpg
-
-|-------keywordssuggest.css
-
-|-------Oeil_Anakeyn.jpg
-
-|-------signin.css
-
-|-------starter-template.css
-
-
-
+|       Anakeyn_Rectangle.jpg
+|       keywordssuggest.css
+|       Oeil_Anakeyn.jpg
+|       signin.css
+|       starter-template.css
+|              
 +---templates
-
-|-------index.html
-
-|-------keywordssuggest.html
-
-|-------login.html
-
-|-------signup.html
-   
-
-+---uploads
+|       index.html
+|       keywordssuggest.html
+|       login.html
+|       signup.html
+|       
++---uploads</pre>
 
 
 By default the system works with a SQLite database called database.db which is created the first time you use the program.
@@ -99,13 +71,17 @@ The same for "original"  keywords/expressions files.
 If available, the system provides a maximum of 10.000 expressions for each file. This could be enough to get ideas :-) 
 
 
-# How to test the program on your computer :
+## How to test the program on your computer :
   
 Download the .zip file of this application https://github.com/Anakeyn/KeywordsSuggest/archive/master.zip and unzip it in a directory on your computer.
 
 Download and Install Anaconda https://www.anaconda.com/distribution/#download-section
 
 Anaconda will install tools on your computer :
+
+![Anaconda-Tools](https://user-images.githubusercontent.com/26166630/63531569-150c0e80-c509-11e9-94b8-b62a01a490dd.jpg)
+
+
 
 
 
