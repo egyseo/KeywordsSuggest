@@ -27,6 +27,7 @@ SQLALchemy (Object-relational mapping for SQL databases),Bootstrap (front-end fr
 |   keywordssuggest.py
 |   license.txt
 |   myconfig.py
+|   requirements.txt
 |   __init__.py
 |   
 +---configdata
