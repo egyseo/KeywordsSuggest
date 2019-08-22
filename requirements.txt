@@ -2,9 +2,9 @@ flask
 flask-bootstrap
 flask-wtf
 wtforms
-flask_sqlalchemy
+flask-sqlalchemy
 werkzeug
-flask_login
+flask-login
 time
 datetime
 numpy
