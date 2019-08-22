@@ -82,16 +82,16 @@ Anaconda will install tools on your computer :
 ![Anaconda-Tools](https://user-images.githubusercontent.com/26166630/63531569-150c0e80-c509-11e9-94b8-b62a01a490dd.jpg)
 
 
+Open Anaconda Prompt and go to the directory where you installed the application previously (for example for Windows : cd c:\Users\myname\document\...\...\ 
+
+Make sure you have the file "requirements.txt" in your directory : dir (Windows) or ls (Linux)
+
+To install Library dependencies for the python code.  You need to install these with the command :
+For Linux :
+while read requirement; do conda install --yes $requirement || pip install $requirement; done < requirements.txt
+For Windows :
+FOR /F "delims=~" %f in (requirements.txt) DO conda install --yes "%f" || pip install "%f"
 
 
-
-
-
-
-# Library dependencies for the python code.  You need to install these with :
-# For Linux :
-# $ while read requirement; do conda install --yes $requirement || pip install $requirement; done < requirements.txt
-# or for Windows :
-# $ FOR /F "delims=~" %f in (requirements.txt) DO conda install --yes "%f" || pip install "%f"
 
 
