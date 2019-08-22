@@ -87,10 +87,16 @@ Open Anaconda Prompt and go to the directory where you installed the application
 Make sure you have the file "requirements.txt" in your directory : dir (Windows) or ls (Linux)
 
 To install Library dependencies for the python code.  You need to install these with the command :
+
 For Linux :
 while read requirement; do conda install --yes $requirement || pip install $requirement; done < requirements.txt
+
 For Windows :
 FOR /F "delims=~" %f in (requirements.txt) DO conda install --yes "%f" || pip install "%f"
+
+![AnacondaPrompt](https://user-images.githubusercontent.com/26166630/63533591-64543e00-c50d-11e9-9942-92a0301b4e0b.jpg)
+
+
 
 
 
