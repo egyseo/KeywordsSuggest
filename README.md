@@ -97,6 +97,14 @@ FOR /F "delims=~" %f in (requirements.txt) DO conda install --yes "%f" || pip in
 ![AnacondaPrompt](https://user-images.githubusercontent.com/26166630/63533591-64543e00-c50d-11e9-9942-92a0301b4e0b.jpg)
 
 
+Next launch Spyder and open the main Python file keywordssuggest.py
+
+![spyder-keywordssuggest](https://user-images.githubusercontent.com/26166630/63534394-5e5f5c80-c50f-11e9-8ffa-34b7dbe76897.jpg)
+
+make sure that you are in the good directory then click on the green arrow to run the Python File.
+
+Next,  open a browser an go to the address http://127.0.0.1:5000 :
+
 
 
 
