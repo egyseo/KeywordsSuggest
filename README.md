@@ -1,4 +1,9 @@
 # KeywordsSuggest - Version Alpha 0.0 Licence GPL 3
+
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/26166630/63529711-703c0200-c505-11e9-94b8-f56cc3a92727.jpg">
+</p>
+
 Anakeyn Keywords Suggest is a keywords suggestion tool for SEO and Web Maketing purpose.
 This tool searches and stores the first x pages responding to a given keyword in Google. 
 
@@ -13,6 +18,11 @@ find popular expressions and a non-zero mean of each term from all documents for
 
 The program is developed in Python in a Web format using Flask (web framework), Jinja2 (web template engine), 
 SQLALchemy (Object-relational mapping for SQL databases),Bootstrap (front-end framework) ...
+
+
+
+![Anakeyn_Rectangle](https://user-images.githubusercontent.com/26166630/63529711-703c0200-c505-11e9-94b8-f56cc3a92727.jpg)
+
 
 STRUCTURE :
 
