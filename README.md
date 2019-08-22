@@ -105,6 +105,13 @@ make sure that you are in the good directory then click on the green arrow to ru
 
 Next,  open a browser an go to the address http://127.0.0.1:5000 :
 
+![AKS-Home](https://user-images.githubusercontent.com/26166630/63535070-dda16000-c510-11e9-803d-2232a99dabf1.jpg)
+
+
+Click on "Keywords Suggest" : the system is protected; Provide the defaults admin credentials : admin, adminpwd or the default guest credentials : guest, guestpwd
+
+Next Choose an expression and a Country/Language targeted.
+
 
 
 
