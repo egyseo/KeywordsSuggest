@@ -112,6 +112,13 @@ Click on "Keywords Suggest" : the system is protected; Provide the defaults admi
 
 Next Choose an expression and a Country/Language targeted.
 
+![AKS-Search](https://user-images.githubusercontent.com/26166630/63536173-56a1b700-c513-11e9-8f54-511a6475aa9d.jpg)
+
+
+The system will search in Google pages responding to the Keyword, save the pages, get the content and calculate a TF-IDF for each term founded in pages. Next it will provides 14 files with up to 10.000 popular or original expressions.
+
+
+
 
 
 
