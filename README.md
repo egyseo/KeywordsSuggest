@@ -13,7 +13,7 @@ in the subject area. The system works  with a TF-IDF  algorithm.
 TF-IDF means term frequency–inverse document frequency. TF-IDF is a numerical statistic that is intended to reflect 
 how important a word is to a document in a collection or corpus.
 
-In order to calculate a "global" TF-IDF value we calculate a mean of TF-IDF for each terms from all documents to 
+In order to calculate a "global" TF-IDF value we calculate a mean of TF-IDF for each term from all documents to 
 find popular expressions and a non-zero mean of each term from all documents for original expressions.
 
 The program is developed in Python in a Web format using Flask (web framework), Jinja2 (web template engine), 
