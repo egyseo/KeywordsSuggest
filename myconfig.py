@@ -10,7 +10,7 @@ import pandas as pd  #for dataframes
 #Define your database
 myDatabaseURI = "sqlite:///database.db"
 
-#define the default upload/dowload parent directory
+#define the default upload/download parent directory
 UPLOAD_SUBDIRECTORY = "/uploads"
 
 #define an admin and a guest
