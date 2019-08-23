@@ -5,17 +5,13 @@ Created on Tue Jul 16 15:41:05 2019
 @author: Pierre
 """
 
-
 import pandas as pd  #for dataframes
-
 
 #Define your database
 myDatabaseURI = "sqlite:///database.db"
 
 #define the default upload/dowload parent directory
 UPLOAD_SUBDIRECTORY = "/uploads"
-
-
 
 #define an admin and a guest
 #change if needed.
@@ -26,11 +22,9 @@ myGuestLogin = "guest"
 myGuestPwd = "guestpwd"
 myGuestEmail = "guest@example.com"
 
-#rem : googlesearch doesn't work with arabic, chinese (not latin alphabets ?)
 #define Google TLD and languages and stopWords
 #see https://developers.google.com/custom-search/docs/xml_results_appendices
 #https://www.metamodpro.com/browser-language-codes
-
 
 #Languages  
 dfTLDLanguages  = pd.read_excel('configdata/tldLang.xlsx')
@@ -43,8 +37,6 @@ if len(dfTLDLanguages) == 0 :
              ['google.fr',  'France', 'fr', 'fr',  'lang_fr',  'countryFR', 'fr-fr',  'french',  'France', 'fr - French']]
     dfTLDLanguages =  pd.DataFrame(data, columns = ['tldLang', 'description', 'tld', 'hl', 'lr', 'cr', 'userAgentLanguage', 'stopWords', 'countryName', 'ISOLanguage' ]) 
 
-
-    
 myTLDLang = [tuple(r) for r in dfTLDLanguages[['tldLang', 'description']].values]
 #print(myTLDLang)
 dfTLDLanguages = dfTLDLanguages.drop_duplicates()
@@ -55,11 +47,10 @@ dfTLDLanguages.info()
 with open('configdata/user_agents-taglang.txt') as f:
   userAgentsList = f.read().splitlines() 
 
-
 #pauses to scrap Google 
 myLowPause=2
 myHighPause=6
-#define max pages to scrap on Google (30 is enough 100 max) 
+#define max pages to scrap on Google (30 is enough, 100 max) 
 myMaxPagesToScrap=30
 #define refresh delay (usually 30 days)
 myRefreshDelay = 30
