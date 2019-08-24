@@ -5,7 +5,6 @@ wtforms
 flask-sqlalchemy
 werkzeug
 flask-login
-time
 datetime
 numpy
 pandas
