@@ -13,6 +13,5 @@ nltk
 sklearn
 requests
 bs4
-unicodedata
 os
 sys
