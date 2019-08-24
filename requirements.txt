@@ -9,7 +9,6 @@ datetime
 numpy
 pandas
 google
-random
 nltk
 sklearn
 requests
