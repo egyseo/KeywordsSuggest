@@ -13,4 +13,3 @@ nltk
 sklearn
 requests
 bs4
-sys
