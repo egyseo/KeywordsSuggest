@@ -1,1 +1,1 @@
-web: flask db upgrade; flask translate compile; gunicorn keywordssuggest:app
+web: gunicorn keywordssuggest:app
