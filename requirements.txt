@@ -6,6 +6,7 @@ wtforms
 flask-sqlalchemy
 werkzeug
 flask-login
+xlrd
 psycopg2
 datetime
 numpy
