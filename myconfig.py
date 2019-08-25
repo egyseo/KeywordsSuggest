@@ -6,9 +6,17 @@ Created on Tue Jul 16 15:41:05 2019
 """
 
 import pandas as pd  #for dataframes
+import os
+import xlrd
 
 #Define your database
-myDatabaseURI = "sqlite:///database.db"
+...
+# Database initialization
+if os.environ.get('DATABASE_URL') is None:
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    myDatabaseURI = 'sqlite:///' + os.path.join(basedir, 'database.db')
+else:
+    myDatabaseURI  = os.environ['DATABASE_URL']
 
 #define the default upload/download parent directory
 UPLOAD_SUBDIRECTORY = "/uploads"
@@ -21,6 +29,7 @@ myAdminEmail = "admin@example.com"
 myGuestLogin = "guest" 
 myGuestPwd = "guestpwd"
 myGuestEmail = "guest@example.com"
+
 
 #define Google TLD and languages and stopWords
 #see https://developers.google.com/custom-search/docs/xml_results_appendices
@@ -36,7 +45,7 @@ if len(dfTLDLanguages) == 0 :
              ['google.de', 'Germany', 'de','de',  'lang_de',  'countryDE',  'de-de', 'german', 'Germany', 'de - German'], 
              ['google.fr',  'France', 'fr', 'fr',  'lang_fr',  'countryFR', 'fr-fr',  'french',  'France', 'fr - French']]
     dfTLDLanguages =  pd.DataFrame(data, columns = ['tldLang', 'description', 'tld', 'hl', 'lr', 'cr', 'userAgentLanguage', 'stopWords', 'countryName', 'ISOLanguage' ]) 
-
+    
 myTLDLang = [tuple(r) for r in dfTLDLanguages[['tldLang', 'description']].values]
 #print(myTLDLang)
 dfTLDLanguages = dfTLDLanguages.drop_duplicates()
@@ -50,7 +59,7 @@ with open('configdata/user_agents-taglang.txt') as f:
 #pauses to scrap Google 
 myLowPause=2
 myHighPause=6
-#define max pages to scrap on Google (30 is enough, 100 max) 
+#define max pages to scrap on Google (30 is enough 100 max) 
 myMaxPagesToScrap=30
 #define refresh delay (usually 30 days)
 myRefreshDelay = 30
