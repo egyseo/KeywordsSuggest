@@ -15,9 +15,6 @@ Created on Tue Jul 16 15:41:05 2019
 # License GPL V3
 #############################################################
 
-
-
-
 #see also
 #https://github.com/PrettyPrinted/building_user_login_system
 #https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
@@ -26,11 +23,9 @@ Created on Tue Jul 16 15:41:05 2019
 #https://github.com/MarioVilas/googlesearch   #googlesearch serp scraper
 #https://pypi.org/project/SerpScrap/  #other serp scraper
 
-
 ###############   FOR FLASK ############################### 
-from flask import Flask, render_template, redirect, url_for,  Response   # send_file,
-#from flask import session  #for the sessions variables
-#from flask_session import Session #for sessions
+#conda install -c anaconda flask
+from flask import Flask, render_template, redirect, url_for,  Response, send_file
 #pip install flask-bootstrap  #if not installed in a console
 from flask_bootstrap import Bootstrap #to have a responsive design with fmask
 from flask_wtf import FlaskForm #forms
@@ -45,7 +40,7 @@ from datetime import datetime, date      #, timedelta
 ##############  For other Functionalities
 import numpy as np #for vectors and arrays
 import pandas as pd  #for dataframes
-#pip install google  #to install Google Searchlibrry by Mario Vilas
+#pip install google  #to install Google Searchlibrary by Mario Vilas
 #https://python-googlesearch.readthedocs.io/en/latest/
 import googlesearch  #Scrap serps
 #to randomize pause
@@ -54,22 +49,19 @@ import random
 import nltk # for text mining
 from nltk.corpus import stopwords
 nltk.download('stopwords')
-
 #print (stopwords.fileids())
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-#from nltk import ngrams #for ngrams
 import requests #to read urls contents
 from bs4 import BeautifulSoup
 from bs4.element import Comment
-#import urllib.request
 import re  #for regex
 import unicodedata  #to decode accents
 import os #for directories 
 import sys #for sys variables
-from flask import send_file
 
 
+##### Flask Environment
 # Returns the directory the current script (or interpreter) is running in
 def get_script_directory():
     path = os.path.realpath(sys.argv[0])
@@ -94,13 +86,16 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'   #what you want
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  #avoid a warning
 app.config['SQLALCHEMY_DATABASE_URI'] =myconfig.myDatabaseURI    #database choice
 
-# 'sqlite:////mnt/c/Users/antho/Documents/login-example/database.db'
 bootstrap = Bootstrap(app)  #for bootstrap compatiblity
-db = SQLAlchemy(app)  #the current database attached to the app.
+
 
 ############# #########################
-#  Database Tables 
+#  Database  and Tables 
 #######################################
+
+db = SQLAlchemy(app)  #the current database attached to the app.
+
+
 #users
 class User(UserMixin, db.Model):
     __tablename__="user"
@@ -224,6 +219,7 @@ if  not exists :
     db.session.add(guest)
     db.session.commit() #execute
 #####   
+
 #create upload/dowload directory for guest
 myDirectory = myScriptDirectory+myconfig.UPLOAD_SUBDIRECTORY+"/"+myconfig.myGuestLogin
 if not os.path.exists(myDirectory):
@@ -234,16 +230,12 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-
+#######################################################
 #Save session data in a global DataFrame depending on user_id
 global dfSession
 dfSession = pd.DataFrame(columns=['user_id', 'userName', 'role', 'keyword', 'tldLang', 'keywordId',  'keywordUserId'])
 dfSession.set_index('user_id', inplace=True)
 dfSession.info()
-
-
-
-
 
 #for tfidf counts
 def top_tfidf_feats(row, features, top_n=25):
@@ -253,8 +245,6 @@ def top_tfidf_feats(row, features, top_n=25):
     df = pd.DataFrame(top_feats)
     df.columns = ['feature', 'value']
     return df
-
-
 
 def top_mean_feats(Xtr, features, grp_ids=None,  top_n=25):
     ''' Return the top n features that on average are most important amongst documents in rows
@@ -361,7 +351,7 @@ def words_to_ngrams(words, n, sep=" "):
 tokenizer = nltk.RegexpTokenizer(r'\w+')  
 
 
-####################  WebSite ######################################
+####################  WebSite ##################################
 #Routes 
 @app.route('/')
 def index():
@@ -375,7 +365,7 @@ def login():
         if user:
             if check_password_hash(user.password, form.password.data):
                 login_user(user, remember=form.remember.data)
-                return redirect(url_for('keywordssuggest'))  #go to the keywords Suggest not general dashboard
+                return redirect(url_for('keywordssuggest'))  #go to the keywords Suggest page
             return '<h1>Invalid password</h1>'
         return '<h1>Invalid username</h1>'
         #return '<h1>' + form.username.data + ' ' + form.password.data + '</h1>'
@@ -401,6 +391,16 @@ def signup():
 def dashboard():
     return render_template('dashboard.html', name=current_user.username)
 
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
+
+#Route keywordssuggest
 @app.route('/keywordssuggest',methods=['GET', 'POST'])
 @login_required
 def keywordssuggest():
@@ -432,9 +432,7 @@ def keywordssuggest():
     dfSession.loc[myUserId,'keyword'] = ""
     dfSession.loc[myUserId,'tldLang'] ="" 
     
-    
-    
-    
+   
     form = SearchForm()
     if form.validate_on_submit():
         dfSession.loc[myUserId,'keyword']  = form.keyword.data  #save in session variable
@@ -833,6 +831,8 @@ def progress():
                 dbKeywordUser.search_date=myDate
                 db.session.commit()        
         
+            ######################################################
+            #######################  tf-idf files generation
             dfSession.loc[ myUserId,'keywordUserId']=myKeywordUserId 
             #Make sure download directory exists
             myDirectory =  myScriptDirectory+myconfig.UPLOAD_SUBDIRECTORY+"/"+myUserName
@@ -1030,7 +1030,7 @@ def progress():
     #loop  generate  
     return Response(generate(dfScrap, myUserId), mimetype='text/event-stream') 
             
-#Donwload keywords File filename
+#download keywords File filename
 @app.route('/downloadKWF/<path:filename>',  methods=['GET', 'POST'] ) # this is a job for GET, not POST
 def downloadKWF(filename):
     #get Session Variables
@@ -1052,8 +1052,8 @@ def downloadKWF(filename):
 
 
 
-#Donwload Popular Keywords  All Keywords
-@app.route('/popAllCSV', methods=['GET']) # this is a job for GET, not POST
+#download Popular Keywords  All Keywords
+@app.route('/popAllCSV') 
 def popAllCSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1076,8 +1076,8 @@ def popAllCSV():
     
     
     
-#Donwload Popular Keywords  1 gram Keywords
-@app.route('/pop1CSV') # this is a job for GET, not POST
+#download Popular Keywords  1 gram Keywords
+@app.route('/pop1CSV') 
 def pop1CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1097,8 +1097,8 @@ def pop1CSV():
     myFileName="pop-"+myKeywordFileNameString+"-1.csv"
     return redirect(url_for('downloadKWF', filename=myFileName)) 
  
- #Donwload Popular Keywords  2 gram Keywords
-@app.route('/pop2CSV') # this is a job for GET, not POST
+ #download Popular Keywords  2 gram Keywords
+@app.route('/pop2CSV') 
 def pop2CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1118,8 +1118,8 @@ def pop2CSV():
     myFileName="pop-"+myKeywordFileNameString+"-2.csv"
     return redirect(url_for('downloadKWF', filename=myFileName)) 
     
- #Donwload Popular Keywords  3 gram Keywords
-@app.route('/pop3CSV') # this is a job for GET, not POST
+ #download Popular Keywords  3 gram Keywords
+@app.route('/pop3CSV') 
 def pop3CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1140,8 +1140,8 @@ def pop3CSV():
     return redirect(url_for('downloadKWF', filename=myFileName)) 
     
     
- #Donwload Popular Keywords  4 gram Keywords
-@app.route('/pop4CSV') # this is a job for GET, not POST
+ #download Popular Keywords  4 gram Keywords
+@app.route('/pop4CSV') 
 def pop4CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1163,8 +1163,8 @@ def pop4CSV():
 
 
 
- #Donwload Popular Keywords  5 gram Keywords
-@app.route('/pop5CSV') # this is a job for GET, not POST
+ #download Popular Keywords  5 gram Keywords
+@app.route('/pop5CSV') 
 def pop5CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1185,8 +1185,8 @@ def pop5CSV():
     return redirect(url_for('downloadKWF', filename=myFileName))       
     
     
- #Donwload Popular Keywords  5 gram Keywords
-@app.route('/pop6CSV') # this is a job for GET, not POST
+ #download Popular Keywords  5 gram Keywords
+@app.route('/pop6CSV') 
 def pop6CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1211,7 +1211,7 @@ def pop6CSV():
 ########################################################
     
  #Dowload Original Keywords    All Keywords
-@app.route('/oriAllCSV') # this is a job for GET, not POST
+@app.route('/oriAllCSV') 
 def oriAllCSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1231,8 +1231,8 @@ def oriAllCSV():
     myFileName="ori-"+myKeywordFileNameString+"-min-max.csv"
     return redirect(url_for('downloadKWF', filename=myFileName))    
             
-#Donwload original Keywords  1 gram Keywords
-@app.route('/ori1CSV') # this is a job for GET, not POST
+#download original Keywords  1 gram Keywords
+@app.route('/ori1CSV') 
 def ori1CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1252,8 +1252,8 @@ def ori1CSV():
     myFileName="ori-"+myKeywordFileNameString+"-1.csv"
     return redirect(url_for('downloadKWF', filename=myFileName))      
  
- #Donwload original Keywords  2 gram Keywords
-@app.route('/ori2CSV') # this is a job for GET, not POST
+ #download original Keywords  2 gram Keywords
+@app.route('/ori2CSV') 
 def ori2CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1273,8 +1273,8 @@ def ori2CSV():
     myFileName="ori-"+myKeywordFileNameString+"-2.csv"
     return redirect(url_for('downloadKWF', filename=myFileName))  
     
- #Donwload original Keywords  3 gram Keywords
-@app.route('/ori3CSV') # this is a job for GET, not POST
+ #download original Keywords  3 gram Keywords
+@app.route('/ori3CSV') 
 def ori3CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1295,8 +1295,8 @@ def ori3CSV():
     return redirect(url_for('downloadKWF', filename=myFileName))  
     
     
- #Donwload original Keywords  4 gram Keywords
-@app.route('/ori4CSV') # this is a job for GET, not POST
+ #download original Keywords  4 gram Keywords
+@app.route('/ori4CSV') 
 def ori4CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1318,8 +1318,8 @@ def ori4CSV():
 
 
 
- #Donwload original Keywords  5 gram Keywords
-@app.route('/ori5CSV') # this is a job for GET, not POST
+ #download original Keywords  5 gram Keywords
+@app.route('/ori5CSV')
 def ori5CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1339,8 +1339,8 @@ def ori5CSV():
     myFileName="ori-"+myKeywordFileNameString+"-5.csv"
     return redirect(url_for('downloadKWF', filename=myFileName))   
     
- #Donwload original Keywords  5 gram Keywords
-@app.route('/ori6CSV') # this is a job for GET, not POST
+ #download original Keywords  5 gram Keywords
+@app.route('/ori6CSV') 
 def ori6CSV():
     #get Session Variables
     if current_user.is_authenticated:
@@ -1362,11 +1362,6 @@ def ori6CSV():
 
 
 
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run()
