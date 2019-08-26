@@ -548,9 +548,9 @@ def progress():
                     #myUserAgent = googlesearch.get_random_user_agent()
                     print("UserAgent:"+str(myUserAgent))
                     df = pd.DataFrame(columns=['query', 'page', 'position', 'source']) #working dataframe
-                    myPause=myPause*(nbTrials+1)  #up the pause if trial get nothing
-                    print("Pause:"+str(myPause))
-                    try :
+                    #myPause=myPause*(nbTrials+1)  #up the pause if trial get nothing
+                    #print("Pause:"+str(myPause))
+                    try  :
                         urls = googlesearch.search(query=myKeyword, tld=myTLD, lang=myHl, safe='off', 
                                                    num=myNum, start=myStart, stop=myStop, domains=None, pause=myPause, 
                                                    only_standard=True, extra_params={'lr':  myLanguageResults, 'cr':  myCountryResults }, tpe='', user_agent=myUserAgent)
@@ -578,11 +578,11 @@ def progress():
                             #myStop += 10
                     except :
                         exc_type, exc_value, exc_traceback = sys.exc_info()
-                        print("GOOGLE ERROR")
+                        print("ERROR")
                         print(exc_type.__name__)
                         print(exc_value)
                         print(exc_traceback)
-                        time.sleep(600) #add a big pause if you get an error.
+                       # time.sleep(600) #add a big pause if you get an error.
                 #/while myStart <  myMaxStart:
             
                 #dfScrap.info()
@@ -653,7 +653,7 @@ def progress():
                        if r.status_code == 200. :   #can't decode utf-7
                            print("Encoding="+str(r.encoding))
                            dfPagesToScrap.loc[i,'encoding'] = r.encoding
-                           if   r.encoding == 'UTF-7' :  #don't get utf-7 content pb with dbd
+                           if   r.encoding == 'UTF-7' :  #don't get utf-7 content pb with db
                                dfPagesToScrap.loc[i, 'html'] =""
                                print("UTF-7 ok page ") 
                            else :
@@ -1364,5 +1364,5 @@ def ori6CSV():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(threaded=True)
    # app.run(debug=True, use_reloader=True)
