@@ -1,1 +1,1 @@
-web: gunicorn keywordssuggest:app
+web: waitress-serve --port=$PORT keywordssuggest:app

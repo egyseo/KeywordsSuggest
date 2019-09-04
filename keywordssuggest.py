@@ -5,7 +5,7 @@ Created on Tue Jul 16 15:41:05 2019
 @author: Pierre
 """
 #############################################################
-# Anakeyn Keywords Suggest version  Alpha 0.0
+# Anakeyn Keywords Suggest Windows  ersion   Alpha 0.0
 # Anakeyn Keywords Suggest is a keywords suggestion tool.
 # This tool searches in the first pages responding to a given keyword in Google. Next the 
 # system will get the content of the pages  in order to find popular and original  keywords 

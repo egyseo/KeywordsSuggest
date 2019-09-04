@@ -1,4 +1,4 @@
-gunicorn
+waitress
 flask
 flask-bootstrap
 flask-wtf
@@ -7,7 +7,7 @@ flask-sqlalchemy
 werkzeug
 flask-login
 xlrd
-psycopg2
+psycopg2-binary
 datetime
 numpy
 pandas
